@@ -64,17 +64,17 @@ var handleErrors = (response) => {
       )
         .then (handleErrors)
         .then((response) => response.json())
-        .then((data) => showResults(data.animals));
+        .then((data) => diplayResults(data.animals));
     })
 
 
 
 
-    // show listings of pets
-function showResults(pets) {
+    // Display the of pets
+function displayResults(pets) {
     var results = document.querySelector("#results");
   
-    // clear results first
+    // empty the list first
     results.innerHTML = "";
   
     // loop over searching result
