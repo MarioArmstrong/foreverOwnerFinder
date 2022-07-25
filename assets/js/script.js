@@ -1,7 +1,24 @@
 var APIkey = "21NQtYEipffSbGzB9w4Spg1IZ2SD9yRB4sNq7Gm27NZsP3dCgM";
 var secret ='OSiRfIrLm4JY5Is4X7qG0d5lFc2f5CdLRl44k2I2';
 var token ="";
+const Form = document.querySelector("#form");
+Form.addEventListener("submit", fetchAnimals);
 
+// fetch animals from API
+function fetchAnimals(event) {
+  event.preventDefault();
+
+  // Get user Input
+  const animal = document.querySelector("#animal").value;
+  const zipCode = document.querySelector("#zipCode").value;
+
+  // check if zipcode if valid
+  if (!isValidZip(zipCode)) {
+    showAlert("Invalid Zipcode. Please try again!");
+    return;
+  }
+
+// return response status
 var handleErrors = (response) => {
     if (!response.ok) {
         throw new Error(response.statusText);
@@ -51,26 +68,6 @@ var handleErrors = (response) => {
     })
 
 
-
-
-const Form = document.querySelector("#form");
-
-Form.addEventListener("submit", fetchAnimals);
-
-
-// fetch animals from API
-function fetchAnimals(event) {
-  event.preventDefault();
-
-  // Get user Input
-  const animal = document.querySelector("#animal").value;
-  const zipCode = document.querySelector("#zipCode").value;
-
-  // Validate Zip
-  if (!isValidZip(zipCode)) {
-    showAlert("Please Enter A Valid Zipcode");
-    return;
-  }
 
 
     // show listings of pets
