@@ -45,7 +45,7 @@ var handleErrors = (response) => {
     .then(() => {
       // use token to fetch animals
       fetch(
-        `https://api.petfinder.com/v2/animals?type=${animal}&location=${zip}`,
+        `https://api.petfinder.com/v2/animals?type=${animal}&location=${zipCode}`,
         {
             //GET method is used to request data from a specified resource
           method: "GET",
