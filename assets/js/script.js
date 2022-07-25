@@ -12,12 +12,6 @@ function fetchAnimals(event) {
   const animal = document.querySelector("#animal").value;
   const zipCode = document.querySelector("#zipCode").value;
 
-  // check if zipcode if valid
-  if (!isValidZip(zipCode)) {
-    showAlert("Invalid Zipcode. Please try again!");
-    return;
-  }
-
 // return response status
 var handleErrors = (response) => {
     if (!response.ok) {
@@ -64,13 +58,13 @@ var handleErrors = (response) => {
       )
         .then (handleErrors)
         .then((response) => response.json())
-        .then((data) => diplayResults(data.animals));
+        .then((data) => displayResults(data.animals));
     })
 
 }
 
 
-    // Display the of pets
+    // Display pets
 function displayResults(pets) {
     var results = document.querySelector("#results");
   
@@ -88,7 +82,10 @@ function displayResults(pets) {
             <p class="text-secondary">${pet.breeds.primary}</p>
             <p>${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcod}</p>
             <p class=" .text-info"> Phone: ${pet.contact.phone}</li>
-          <img class="img-fluid rounded-circle mt-2" src="${pet.photos[0].medium : ""}">
+          <img class="img-fluid  mt-2" src="${
+            pet.photos[0] ? pet.photos[0].medium : ""
+          }">
+  
           </div>
         </div> `;
       results.appendChild(information);
