@@ -50,6 +50,29 @@ var handleErrors = (response) => {
         .then((data) => showResults(data.animals));
     })
 
+
+
+
+const Form = document.querySelector("#form");
+
+Form.addEventListener("submit", fetchAnimals);
+
+
+// fetch animals from API
+function fetchAnimals(event) {
+  event.preventDefault();
+
+  // Get user Input
+  const animal = document.querySelector("#animal").value;
+  const zipCode = document.querySelector("#zipCode").value;
+
+  // Validate Zip
+  if (!isValidZip(zipCode)) {
+    showAlert("Please Enter A Valid Zipcode");
+    return;
+  }
+
+
     // show listings of pets
 function showResults(pets) {
     var results = document.querySelector("#results");
