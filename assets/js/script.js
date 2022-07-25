@@ -84,11 +84,11 @@ function displayResults(pets) {
       information.innerHTML = `
         <div class="row">
           <div class="col-sm-6">
-            <h4>${pet.name} (${pet.age})</h4>
+            <h1>${pet.name} (${pet.age})</h1>
             <p class="text-secondary">${pet.breeds.primary}</p>
             <p>${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcod}</p>
             <p class=" .text-info"> Phone: ${pet.contact.phone}</li>
-          <img class="img-fluid rounded-circle mt-2" src="${pet.photos[0] ? pet.photos[0].medium : ""}">
+          <img class="img-fluid rounded-circle mt-2" src="${pet.photos[0].medium : ""}">
           </div>
         </div> `;
       results.appendChild(information);
