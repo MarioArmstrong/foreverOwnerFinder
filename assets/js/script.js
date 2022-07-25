@@ -67,7 +67,7 @@ var handleErrors = (response) => {
         .then((data) => diplayResults(data.animals));
     })
 
-
+}
 
 
     // Display the of pets
