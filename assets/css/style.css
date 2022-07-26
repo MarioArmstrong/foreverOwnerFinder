@@ -1,3 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+ul {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    padding: 10px 10px;
+}
+
+li a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+
+}
+#navigation {
+    display: inline;
+}
+
+.searchBox {
+    float: right;
+}
