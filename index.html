@@ -10,23 +10,27 @@
 </head>
 <body>
     <header class="level">
-      <h1 class="level-item has-text-center">Welcome to Forever Owner Finder &copy;</h1>
+      <h1 class="level-item has-text-center has-background-danger-light is-size-1 py-5">Welcome to Forever Owner Finder &copy;</h1>
     </header>
-    <body>
+    <body class=" container has-background-grey-lighter">
       <section class="navigationSection" id="navigation">
-        <nav class="navBar level-item">
-        <select class="searchBox">
+        <nav class="navBar level-item pb-5">
+          <p class="px-3 is-size-4">I would like a:    </p>
+        <select class="searchBox " id="animal">
           <option>Dog</option>
           <option>Cat</option>
           <option>Reptile</option>
           <option>Rabbit</option>
           <option>Mice</option>
-          <input class="searchBox" placeholder="Zipcode"></input>
-          <button class="searchBTN">Search</button>
+          <input class="searchBox" placeholder="Zipcode" id="zipCode"></input>
+          <button class="searchBTN button is-dark is-rounded is-small" id="form">Search</button>
         </select>
       </nav>
+    </section >
+    <section id="results">
+
     </section>
-    <section class="mainSection">
+    <section id="mission-Statement"class="mainSection">
       <h2>Mission Statement</h2>
         <p>Forever Owner Finder &copy; is a non-profit with the sole purpose of connection families from all over to loveable pets.</p>
     </section>
