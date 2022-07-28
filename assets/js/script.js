@@ -3,6 +3,12 @@ var APIkey = "21NQtYEipffSbGzB9w4Spg1IZ2SD9yRB4sNq7Gm27NZsP3dCgM";
 var secret ='OSiRfIrLm4JY5Is4X7qG0d5lFc2f5CdLRl44k2I2';
 var token ="";
 const Form = document.querySelector("#form");
+var GoogleAPI= "AIzaSyBOyvzJ4HnoViMXPbiH55KF0vqM08GOZ-I";
+var geocoder;
+var map;
+
+
+
 Form.addEventListener("submit", fetchAnimals);
 
 // fetch animals from API
@@ -60,13 +66,14 @@ var handleErrors = (response) => {
         .then (handleErrors)
         .then((response) => response.json())
         .then((data) => displayResults(data.animals));
+        
     })
 
 }
 
 
     // Display pets
-function displayResults(pets) {
+    window.onload = function displayResults(pets) {
     var results = document.querySelector("#results");
   
     // empty the list first
@@ -74,21 +81,60 @@ function displayResults(pets) {
   
     // loop over searching result
     pets.forEach((pet) => {
+      console.log(pet);
       const information = document.createElement("div");
+     
       information.classList.add("card", "card-body", "mb-3");
       information.innerHTML = `
         <div class="row">
           <div class="col-sm-6">
             <h1>${pet.name} (${pet.age})</h1>
-            <p class="text-secondary">${pet.breeds.primary}</p>
+         
             <p>${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcod}</p>
             <p class=" .text-info"> Phone: ${pet.contact.phone}</li>
-          <img class="img-fluid  mt-2" src="${
-            pet.photos[0] ? pet.photos[0].medium : ""
-          }">
-  
+            <p class=".text-info"> id="address" City: ${pet.contact.address.city}</li>
+           
+          <img class="img-fluid  mt-2" src="${pet.photos[0] ? pet.photos[0].medium : ""}">
+          <input type="submit" value="Show Location" class="btn btn-dark btn-sm" onclick='initmap(${pet.contact.address.city})'>
+          <div id="map"></div>
           </div>
         </div> `;
+        
       results.appendChild(information);
     });
   }
+  
+
+  var address = "San Diego, CA";
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng();
+  var myOptions = {
+    zoom: 14,
+    center: latlng 
+  };
+  map = new google.maps.Map(document.getElementById('map'), myOptions);
+    if (geocoder) {
+      geocoder.geocode({
+        'address': address
+      }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+            map.setCenter(results[0].geometry.location);
+  
+            var marker = new google.maps.Marker({
+              position: results[0].geometry.location,
+              map: map,
+              title: address
+            });     
+          } else {
+            alert("No results found");
+          }
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+  }
+  
+  
