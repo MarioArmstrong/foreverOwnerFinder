@@ -5,7 +5,10 @@
     width: 100%;
     text-align: center;
 } */
-
+html {
+    height: 800px;
+    width: 1000px;
+}
 footer {
     position: fixed;
     left: 0;
@@ -17,4 +20,23 @@ footer {
 .mainSection {
     text-align: center;
     padding-top: 30px;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.row .col-sm-6 h1 {
+    color: crimson;
+    font-size: large;
+    text-transform:capitalize;
+}
+
+.row .col-sm-6 img {
+    position: right;
+}
+
+.pl-5:nth-child(odd){
+    background-color: hsl(347, 90%, 96%);
 }

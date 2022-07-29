@@ -3,7 +3,7 @@ var APIkey = "21NQtYEipffSbGzB9w4Spg1IZ2SD9yRB4sNq7Gm27NZsP3dCgM";
 var secret ='OSiRfIrLm4JY5Is4X7qG0d5lFc2f5CdLRl44k2I2';
 var token ="";
 const Form = document.querySelector("#form");
-Form.addEventListener("submit", fetchAnimals);
+Form.addEventListener("click", fetchAnimals);
 
 // fetch animals from API
 function fetchAnimals(event) {
@@ -61,7 +61,7 @@ var handleErrors = (response) => {
         .then((response) => response.json())
         .then((data) => displayResults(data.animals));
     })
-
+    document.querySelector("#mission-statement")
 }
 
 
@@ -75,20 +75,22 @@ function displayResults(pets) {
     // loop over searching result
     pets.forEach((pet) => {
       const information = document.createElement("div");
-      information.classList.add("card", "card-body", "mb-3");
+      information.classList.add("columns", "pl-5");
       information.innerHTML = `
-        <div class="row">
-          <div class="col-sm-6">
-            <h1>${pet.name} (${pet.age})</h1>
-            <p class="text-secondary">${pet.breeds.primary}</p>
-            <p>${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcod}</p>
-            <p class=" .text-info"> Phone: ${pet.contact.phone}</li>
-          <img class="img-fluid  mt-2" src="${
-            pet.photos[0] ? pet.photos[0].medium : ""
-          }">
-  
-          </div>
-        </div> `;
+      <div class="column is-one-third">
+      <h1>${pet.name} (${pet.age})</h1>
+                <p class="text-secondary">${pet.breeds.primary}</p>
+                <p>${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcode}</p>
+                <p class=" .text-info"> Phone: ${pet.contact.phone}</p>
+                <p class=".location"> Location: ${pet.contact.address.address1} or ${pet.contact.address.address2}, ${pet.contact.city}, ${pet.contact.address.postcode}</p>
+      </div>
+      <div class="column"><img class="img-fluid  mt-2" src="${
+                pet.photos[0] ? pet.photos[0].medium : ""
+              }"></div>
+      <div class="column"> 
+              <h2> Google Map Holder</h2>
+      </div>`;
       results.appendChild(information);
     });
   }
+
