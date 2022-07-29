@@ -1,9 +1,11 @@
-
 var APIkey = "21NQtYEipffSbGzB9w4Spg1IZ2SD9yRB4sNq7Gm27NZsP3dCgM";
-var secret ='OSiRfIrLm4JY5Is4X7qG0d5lFc2f5CdLRl44k2I2';
-var token ="";
-const Form = document.querySelector("#searchBTN");
-Form.addEventListener("click", fetchAnimals);
+var secret = 'OSiRfIrLm4JY5Is4X7qG0d5lFc2f5CdLRl44k2I2';
+var token = "";
+const searchBtnEl = document.querySelector("#search");
+var GoogleAPI = "AIzaSyBOyvzJ4HnoViMXPbiH55KF0vqM08GOZ-I";
+var geocoder;
+var map;
+searchBtnEl.addEventListener("click", fetchAnimals);
 
 // fetch animals from API
 function fetchAnimals(event) {
@@ -61,19 +63,20 @@ var handleErrors = (response) => {
         .then((response) => response.json())
         .then((data) => displayResults(data.animals));
     })
-    document.querySelector("#mission-statement")
 }
 
 
     // Display pets
 function displayResults(pets) {
-    var results = document.querySelector("#results");
+    var results = document.querySelector("#Holder");
   
     // empty the list first
+    //results.innerHTML = "";
     results.innerHTML = "";
-  
+
     // loop over searching result
     pets.forEach((pet) => {
+      console.log(pet);
       const information = document.createElement("div");
       information.classList.add("columns", "pl-5");
       information.innerHTML = `
@@ -82,15 +85,61 @@ function displayResults(pets) {
                 <p class="text-secondary">${pet.breeds.primary}</p>
                 <p>${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcode}</p>
                 <p class=" .text-info"> Phone: ${pet.contact.phone}</p>
-                <p class=".location"> Location: ${pet.contact.address.address1} or ${pet.contact.address.address2}, ${pet.contact.city}, ${pet.contact.address.postcode}</p>
+                <p>Phone: ${pet.contact.phone}</p>
+                <p>Email: ${pet.contact.email} </p>
+                <p>Shelter ID: ${pet.organization_id} </p>
       </div>
       <div class="column"><img class="img-fluid  mt-2" src="${
                 pet.photos[0] ? pet.photos[0].medium : ""
               }"></div>
       <div class="column"> 
               <h2> Google Map Holder</h2>
+              <input type="submit" value="Show Location" class="btn btn-dark btn-sm" data-city=${pet.contact.address.city}   onclick="initMap(event, '${pet.contact.address.postcode}')">
+              <div id="map"></div>
+
       </div>`;
       results.appendChild(information);
     });
   }
 
+  var address = "San Diego, CA";
+  function initMap(event, address) {
+    var mapNode= event.target.nextElementSibling;
+    console.log(event.target.nextElementSibling);
+    if (address===undefined){
+      address= "San Diego, CA";
+    }else{
+  
+      address = address;
+    }
+  
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 14,
+      center: latlng
+    };
+    map = new google.maps.Map(mapNode, myOptions);
+    if (geocoder) {
+      geocoder.geocode({
+        'address': address
+      }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+            map.setCenter(results[0].geometry.location);
+  
+            var marker = new google.maps.Marker({
+              position: results[0].geometry.location,
+              map: map,
+              title: address
+            });
+          } else {
+            alert("No results found");
+          }
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+  }
+  

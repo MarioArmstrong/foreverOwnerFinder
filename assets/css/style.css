@@ -5,10 +5,8 @@
     width: 100%;
     text-align: center;
 } */
-html {
-    height: 800px;
-    width: 1000px;
-}
+/* html {
+} */
 footer {
     position: fixed;
     left: 0;
@@ -40,3 +38,9 @@ body {
 .pl-5:nth-child(odd){
     background-color: hsl(347, 90%, 96%);
 }
+#map {
+    height: 350px;
+    /* The height is 400 pixels */
+    width: 200%;
+    /* The width is the width of the web page */
+  }
