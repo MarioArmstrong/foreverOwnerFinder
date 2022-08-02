@@ -10,16 +10,16 @@
 </head>
 <body>
 
-  <div class="hero is-success">                       <!--HEADER AREA-->
+  <div class="hero">                       <!--HEADER AREA-->
     <header class="level hero-body">
-      <h1 class="level-item has-text-center title is-size-1">Welcome to ForeverOwnerFinder &copy;</h1>
+      <h1 id="headerText" class="level-item has-text-center title is-size-1">Welcome to ForeverOwnerFinder &copy;</h1>
     </header>
   </div><!--END HEADER-->
 
-  <div class="columns pt-2 pb-2">                     <!--NAVIGATION AREA-->
-  <section class="navigationSection column is-three-fifths is-offset-one-quarter" id="navigation">
+  <div class="columns is-centered pt-2 pb-2">                     <!--NAVIGATION AREA-->
+  <section class="navigationSection column" id="navigation">
     <nav class="navBar level-item">
-      <p>I would like a:</p>
+      <p class="pr-2 is-uppercase has-text-weight-semibold">I would like a:</p>
       <select id="animal" class="searchBox select is-normal">
         <option>dog</option>
         <option>cat</option>
@@ -29,12 +29,11 @@
         <option>bird</option>
         <option>scales-fins-other</option>
         <option>small-furry</option>
-      </span>
-        <input id="zipCode" class="searchBox input is-success is-rounded" placeholder="Zipcode"></input>
+      </select>
+        <input id="zipCode" class="column is-one-fifth searchBox input is-success is-rounded" placeholder="Zipcode"></input>
           <div class="buttons">
             <button id="search" type="submit" class="searchBTN button is-info is-default">Search</button>
           </div>
-      </select>
     </nav>
   </section>
   </div><!--END NAVIGATION-->
@@ -43,7 +42,7 @@
     <div id="missionStatement" class="tile is-12 is-ancestor ml-1">
       <!--Mission Statement Tile-->
       <div class="tile is-vertical is-parent"><!--"is-hidden" is the class to hide something-->
-        <section class="tile is-child notification is-danger mainSection">
+        <section class="tile is-child notification mainSection">
           <h2 class="title">Mission Statement</h2>
           <p class="content">Forever Owner Finder &copy; is a non-profit with the sole purpose of connection families from all over to loveable pets.</p>
         </section>
@@ -55,7 +54,7 @@
   </main><!--END MAIN-->
 
                                                       <!--FOOTER AREA-->
-  <footer class="has-background-warning has-text-success">
+  <footer class="has-text-white">
     <div clas="content has-text-centered">
       <h4>Copyright &copy; HDM 2022</h4>
     </div>
