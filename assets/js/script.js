@@ -96,7 +96,7 @@ function displayResults(pets) {
               }"></div>
       <div class="column"> 
               <h2>Google Map:</h2>
-              <input type="submit" value="Show Location" class="btn btn-dark btn-sm" data-city=${pet.contact.address.city}   onclick="initMap(event, '${pet.contact.address.postcode}')">
+              <input type="submit" value="Show Location" class="btn btn-dark btn-sm" data-city=${pet.contact.address.city}   onclick="showMap(event, '${pet.contact.address.postcode}')">
               <div id="map"></div>
 
       </div>`;
@@ -105,7 +105,8 @@ function displayResults(pets) {
   }
 
   var address = "San Diego, CA";
-  function initMap(event, address) {
+  function showMap(event, address) {
+    console.log(event);
     var mapNode= event.target.nextElementSibling;
     console.log(event.target.nextElementSibling);
     if (address===undefined){
