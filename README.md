@@ -13,4 +13,4 @@ gitHub Repo Link: https://github.com/MarioArmstrong/foreverOwnerFinder
 
 ![Screenshot 2022-08-01 211414](https://user-images.githubusercontent.com/89109707/182297014-af9b6c1c-e737-4138-a002-dafa6e9a41ae.jpg)
 
-![Screenshot 2022-08-01 211133](https://user-images.githubusercontent.com/89109707/182297026-0bc1819b-b96c-4583-b8c2-d7a4ad481374.jpg)
+![Screenshot 2022-08-01 211611](https://user-images.githubusercontent.com/89109707/182297181-33df5f8e-d9f2-4fe5-bfbd-ab291a6aae59.jpg)
