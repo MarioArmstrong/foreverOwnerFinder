@@ -1,4 +1,16 @@
+.hero{
+    background-color: #FF3860;
+}
+
+#headerText{
+    color:white;
+}
+
+.tile {
+    background-color: #4dca2d;
+}
 footer {
+    background-color: #3860ff;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -17,15 +29,15 @@ body {
     width: 100%;
 }
 
-.row .col-sm-6 h1 {
+/* .row .col-sm-6 h1 {
     color: crimson;
     font-size: large;
     text-transform:capitalize;
-}
+} */
 
-.row .col-sm-6 img {
+/* .row .col-sm-6 img {
     position: right;
-}
+} */
 
 .pl-5:nth-child(odd){
     background-color: hsl(347, 90%, 96%);
