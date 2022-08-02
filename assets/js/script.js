@@ -84,19 +84,18 @@ function displayResults(pets) {
       information.innerHTML = `
       <div class="column is-one-quarter">
       <h1 class="is-size-1">${pet.name} (${pet.age})</h1>
-                <p class="text-secondary">${pet.breeds.primary}</p>
+                <p class="">${pet.breeds.primary}</p>
                 <p>${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcode}</p>
-                <p class=" .text-info"> Phone: ${pet.contact.phone}</p>
                 <p>Phone: ${pet.contact.phone}</p>
                 <p>Email: ${pet.contact.email} </p>
                 <p>Shelter ID: ${pet.organization_id} </p>
       </div>
-      <div class="column is-one-quarter"><img class="img-fluid  mt-2" src="${
+      <div class="column is-one-quarter"><img alt="picture of loveable pet" class="mt-2" src="${
                 pet.photos[0] ? pet.photos[0].medium : ""
               }"></div>
       <div class="column"> 
               <h2>Google Map:</h2>
-              <input type="submit" value="Show Location" class="btn btn-dark btn-sm" data-city=${pet.contact.address.city}   onclick="showMap(event, '${pet.contact.address.postcode}')">
+              <input type="submit" value="Show Location" onclick="showMap(event, '${pet.contact.address.postcode}')">
               <div id="map"></div>
 
       </div>`;
