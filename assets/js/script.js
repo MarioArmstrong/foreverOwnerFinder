@@ -83,7 +83,7 @@ function displayResults(pets) {
       information.classList.add("columns", "pl-5");
       information.innerHTML = `
       <div class="column is-one-quarter">
-      <h1>${pet.name} (${pet.age})</h1>
+      <h1 class="is-size-1">${pet.name} (${pet.age})</h1>
                 <p class="text-secondary">${pet.breeds.primary}</p>
                 <p>${pet.contact.address.city}, ${pet.contact.address.state} ${pet.contact.address.postcode}</p>
                 <p class=" .text-info"> Phone: ${pet.contact.phone}</p>
@@ -95,7 +95,7 @@ function displayResults(pets) {
                 pet.photos[0] ? pet.photos[0].medium : ""
               }"></div>
       <div class="column"> 
-              <h2>Google Map</h2>
+              <h2>Google Map:</h2>
               <input type="submit" value="Show Location" class="btn btn-dark btn-sm" data-city=${pet.contact.address.city}   onclick="initMap(event, '${pet.contact.address.postcode}')">
               <div id="map"></div>
 
